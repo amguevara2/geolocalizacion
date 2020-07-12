@@ -9,14 +9,15 @@
    <ion-card-header>Datos Usuario</ion-card-header>
    <ion-card-content>
     <ion-list>
-      <ion-item>
+      <!-- <ion-item>
         <ion-label position= "floating">Usuario:</ion-label>
         <ion-input type="text" [(ngModel)]="user"></ion-input>
+      </ion-item> -->
+      <ion-item>
+        <ion-input  placeholder="Usuario" type="text"  [(ngModel)]="user"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label position= "floating" >Contraseña:</ion-label>
-        <ion-input type="text" [(ngModel)]="pass"></ion-input>
-        <ion-input name="password" olaceholder="Password" [type]='text':'password'"></ion-input>
+        <ion-input  placeholder="Contraseña" [type]="showPassword ? 'text' : 'password'" [(ngModel)]="pass"></ion-input>
       </ion-item>
     </ion-list>
     <div padding>
