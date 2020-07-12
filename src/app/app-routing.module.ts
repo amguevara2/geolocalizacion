@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import {AuthGuard}  from './guards/auth.guard';
+import {NologinGuard} from './guards/nologin.guard'
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule),canActivate:[NologinGuard]
     /* loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule) */
   },
  /*  {
@@ -13,7 +15,7 @@ const routes: Routes = [
   }, */
   {
     path: 'menu',
-    loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule)
+    loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule),canActivate:[AuthGuard]
   },
   
 ];
