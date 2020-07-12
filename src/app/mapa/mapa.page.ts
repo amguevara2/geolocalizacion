@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 
+declare var google;
+
 @Component({
   selector: 'app-mapa',
   templateUrl: './mapa.page.html',
@@ -23,6 +25,10 @@ export class MapaPage implements OnInit {
   };
   console.log(myLatLng);
   const mapEle: HTMLElement = document.getElementById('map');
+  const map = new google.maps.Map(mapEle, {
+    center: myLatLng,
+    zoom: 12
+  }); 
   }
 
 }
