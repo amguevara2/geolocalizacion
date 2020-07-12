@@ -54,6 +54,12 @@ export class ModalCdlaPage implements OnInit {
       })
     })
   }
+  activarBotonesG(){
+    document.getElementById('upButton').style.display="block";
+    document.getElementById('downButton').style.display="block";
+    document.getElementById('leftButton').style.display="block";
+    document.getElementById('rightButton').style.display="block";
+  }
 
   
   ngOnInit() {
