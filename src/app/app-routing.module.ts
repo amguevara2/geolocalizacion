@@ -16,10 +16,16 @@ const routes: Routes = [
   {
     path: 'menu',
     loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule),canActivate:[AuthGuard]
-  },  {
+  },
+  {
     path: 'mapa',
     loadChildren: () => import('./mapa/mapa.module').then( m => m.MapaPageModule)
   },
+  {
+    path: 'modal-cdla',
+    loadChildren: () => import('./modlcdla/modal-cdla.module').then( m => m.ModalCdlaPageModule)
+  },
+
 
   
 ];

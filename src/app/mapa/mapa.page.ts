@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { LoadingController, NumericValueAccessor } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
+import { ModalCdlaPage } from '../modlcdla/modal-cdla.page';
+
 
 declare var google;
 
@@ -11,7 +14,7 @@ declare var google;
 })
 export class MapaPage implements OnInit {
   mapRef = null;
-  constructor(private geolocation: Geolocation, private loadingCtrl: LoadingController) { }
+  constructor(private geolocation: Geolocation, private loadingCtrl: LoadingController, private modal:ModalController) { }
 
   ngOnInit() {
     this.loadMap();
@@ -24,7 +27,7 @@ export class MapaPage implements OnInit {
     const mapEle: HTMLElement = document.getElementById('map');
     this.mapRef = new google.maps.Map(mapEle, {
     center: myLatLng,
-    zoom: 12
+    zoom: 20
   }); 
   google.maps.event
 .addListenerOnce(this.mapRef, 'idle', () => {
@@ -33,12 +36,21 @@ export class MapaPage implements OnInit {
   this.Addmarcador(myLatLng.lat, myLatLng.lng);
   
 });
-  }
+}
+
+async cedula()
+{
+const myModal =await this.modal.create({
+  component: ModalCdlaPage
+ 
+});
+  return await myModal.present();
+}
 
 private Addmarcador(lat: number, lng: number){
   const marker = new google.maps.Marker({
     position: {lat,lng},
-    zoom: 8,
+    zoom: 20,
     map: this.mapRef  ,
     title: 'Hello World!'
   });

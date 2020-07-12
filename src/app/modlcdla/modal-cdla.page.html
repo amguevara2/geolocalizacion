@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <center><ion-title>Ingrese Cédula</ion-title></center>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-input  placeholder="Ingrese Cedula" type="text"  [(ngModel)]="cedu"></ion-input>
+    <div padding>
+      <ion-button (click)='verificaCedula()'>
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+    </div>
+    
+  </ion-item>
+  
+  
+</ion-content>
