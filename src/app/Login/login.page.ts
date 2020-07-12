@@ -8,9 +8,9 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
   
-  user: string;
+  correo: string;
   pass: string;
-  user1: string="Alexis";
+  correo1: string="al@hotmail.com";
   pass1: string="123456789";
   islogged: boolean;
   
@@ -21,7 +21,7 @@ export class LoginPage implements OnInit {
 
     ingresar(){
 
-      if(this.user==this.user1 && this.pass==this.pass1){
+      if(this.correo==this.correo1 && this.pass==this.pass1){
       console.log("Perfecto");
       this.router.navigate(['./menu'])
       }

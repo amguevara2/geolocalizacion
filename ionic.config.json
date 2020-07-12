@@ -1,7 +1,8 @@
 {
   "name": "geolocalizacion",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }
