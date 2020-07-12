@@ -28,6 +28,10 @@ const routes: Routes = [
 
 
   
+  {
+    path: 'cliente',
+    loadChildren: () => import('./cliente/cliente.module').then( m => m.ClientePageModule)
+  },
 ];
 
 @NgModule({
