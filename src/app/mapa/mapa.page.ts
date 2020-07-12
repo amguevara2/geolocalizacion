@@ -14,6 +14,7 @@ declare var google;
 })
 export class MapaPage implements OnInit {
   mapRef = null;
+  
   constructor(private geolocation: Geolocation, private loadingCtrl: LoadingController, private modal:ModalController) { }
 
 
@@ -22,14 +23,11 @@ export class MapaPage implements OnInit {
   }
 
   async loadMap(){
-
-    
-
-    
     const loading = await this.loadingCtrl.create();
     loading.present();
     const myLatLng= await this.ObtenerUbicacion();
     const mapEle: HTMLElement = document.getElementById('map');
+
     this.mapRef = new google.maps.Map(mapEle, {
     center: myLatLng,
     disableDefaultUI: true,
@@ -46,14 +44,18 @@ export class MapaPage implements OnInit {
   this.Addmarcador(myLatLng.lat, myLatLng.lng);
   
 });
+var componente = document.createElement('img');
+this.mapRef.controls[google.maps.ControlPosition.TOP_CENTER].push(this.controlDiv(componente,"up"));
+var componente1 = document.createElement('img');
+this.mapRef.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(this.controlDiv(componente1,"down"));
+var componente2 = document.createElement('img');
+this.mapRef.controls[google.maps.ControlPosition.LEFT_CENTER].push(this.controlDiv(componente2,"left"));
+var componente3 = document.createElement('img');
+this.mapRef.controls[google.maps.ControlPosition.RIGHT_CENTER].push(this.controlDiv(componente3,"right"));
 
-var componente = document.createElement('div');
+}
 
-this.mapRef.controls[google.maps.ControlPosition.TOP_CENTER].push(this.controlDiv(componente,"down","padding-top"));
-this.mapRef.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(this.controlDiv(componente,"up","padding-up"));
-this.mapRef.controls[google.maps.ControlPosition.LEFT_CENTER].push(this.controlDiv(componente,"left","padding-left"));
-this.mapRef.controls[google.maps.ControlPosition.RIGHT_CENTER].push(this.controlDiv(componente,"right","padding-right"));
-  }
+
 
 async cedula()
 {
@@ -71,7 +73,8 @@ private Addmarcador(lat: number, lng: number){
     zoom: 20,
     map: this.mapRef  ,
     draggable: true, 
-    title: 'Hello World!'
+    title: 'Hello World!',
+    
   });
 }
 
@@ -84,47 +87,45 @@ private async ObtenerUbicacion(){
 
 }
 
-controlDiv(div,value,possicion){
-
-
-
-
+controlDiv(componente,value){
 switch (value) {
   case "up":
-    div.id="upMap";
-    div.style.borderBottom="30px solid #0A0A0A";
-    div.style.borderLeft="30px solid transparent";
-    div.style.borderRight="30px solid transparent";
+    componente.src="https://www.unicef.org.mx/SITAN/wp-content/uploads/2018/10/arrow-icon-clip-art-file-down-arrow-icon-png-balin-icon-arrow-right-32.png";
+    componente.style.width="100px";
+    componente.style.height="100px";
+    componente.style.webkitTransform="rotate(180deg)"
+    componente.id="upButton"
     break;
   case "down":
-    div.id="downMap";
-    div.style.borderTop="30px solid #0A0A0A";
-    div.style.borderLeft="30px solid transparent";
-    div.style.borderRight="30px solid transparent";
+    componente.src="https://www.unicef.org.mx/SITAN/wp-content/uploads/2018/10/arrow-icon-clip-art-file-down-arrow-icon-png-balin-icon-arrow-right-32.png";
+    componente.style.width="100px";
+    componente.style.height="100px"
+    
+    componente.id="downButton"
+
     break;
   case "left":
-    div.id="leftMap";
-    div.style.borderBottom="30px solid transparent";
-    div.style.borderTop="30px solid transparent";
-    div.style.borderRight="30px solid #0A0A0A";
+    componente.src="https://www.unicef.org.mx/SITAN/wp-content/uploads/2018/10/arrow-icon-clip-art-file-down-arrow-icon-png-balin-icon-arrow-right-32.png";
+    componente.style.width="100px";
+    componente.style.height="100px";
+    componente.style.webkitTransform="rotate(90deg)";
+    componente.id="leftButton"
     break;
   case "right":
-    div.id="rightMap";
-    div.style.borderBottom="30px solid transparent";
-    div.style.borderTop="30px solid transparent";
-    div.style.borderLeft="30px solid #0A0A0A";
+    componente.src="https://www.unicef.org.mx/SITAN/wp-content/uploads/2018/10/arrow-icon-clip-art-file-down-arrow-icon-png-balin-icon-arrow-right-32.png";
+    componente.style.width="100px";
+    componente.style.height="100px";
+    componente.style.webkitTransform="rotate(-90deg)";
+    componente.id="rightButton"
     break;
 
   default:
     break;
 }
 
-div.style.fontSize="0px";
-div.style.lineHeight="0px";
-div.style[possicion] = '30px';
 
 
-return div
+return componente
 
 }
 
