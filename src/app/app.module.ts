@@ -17,11 +17,14 @@ import {firebaseConfig} from '../environments/environment';
 //  metodo de conectividad
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth'
+import {AngularFirestoreModule} from '@angular/fire/firestore'
+
+
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [AngularFireModule.initializeApp(firebaseConfig),AngularFireAuthModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [AngularFirestoreModule,AngularFireModule.initializeApp(firebaseConfig),AngularFireAuthModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule],
   providers: [
     StatusBar,
     SplashScreen,

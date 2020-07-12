@@ -12,8 +12,34 @@
         <ion-icon slot="icon-only" name="search"></ion-icon>
       </ion-button>
     </div>
-    
   </ion-item>
+
+  <ion-card class="apps-card" *ngIf="listCliente.length>0">
+    <ion-card-header>
+      <ion-card-title>Cliente</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let classCliente of listCliente">
+          <ion-thumbnail slot="start">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/1200px-User_font_awesome.svg.png"/>
+          </ion-thumbnail>
+          <ion-label>
+            <h3>Cliente </h3>
+            <p>{{classCliente.nombre}} {{classCliente.apellido}}</p>
+            <h3>Cedula </h3>
+            <p>{{classCliente.cedula}}</p>
+            <h3>Telefono Casa </h3>
+            <p>{{classCliente.telefonoCasa}}</p>
+            <h3>Direccion </h3>
+            <p>{{classCliente.direcciones.direccion}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+
   
   
 </ion-content>
