@@ -10,7 +10,7 @@ import {AuthService} from '../servicios/auth.service';
 })
 export class LoginPage implements OnInit {
   
-  correo: string;
+  user: string;
   pass: string;
   islogged: boolean;
   
